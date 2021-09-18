@@ -14,7 +14,7 @@ This work is licensed under a
 AR Monocle and app to bring subs to deaf persons
 
 OUVER comes from the portuguese "ouvir" (to listen) plus "ver" (to see).
-It aims to create a affordable AR Monocle that with the app of a APP, will show in real time subtitles of the world.
+It aims to create a affordable AR Monocle that together with a APP, will show in real time subtitles of the world.
 At the moment we are able to convert speech and we are working now to be able to show first importance sound like car hornings, falling objects, between other.
 
 We want to make this project as a diy solution so it can set the bar for the prices of sets that will appear made industrially.
