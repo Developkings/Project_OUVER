@@ -25,6 +25,7 @@ U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;
 void setup() {
   Serial.begin(9600);
 
+
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
     Serial.println(F("SSD1306 allocation failed"));
@@ -39,12 +40,15 @@ u8g2_for_adafruit_gfx.begin(display);
 }
 
 void loop() {
+
+
   
 String character = "";
 
     
-if(Serial.available()) {
-    character = Serial.readStringUntil('\n');
+if(Serial.available()>0) {
+    //delay(60);
+   character = Serial.readString();
 }
       
 if (character != "") {
@@ -118,6 +122,3 @@ else {
 }
 }
 }
-
-
-
