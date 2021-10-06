@@ -48,7 +48,7 @@ String character = "";
     
 if(Serial.available()>0) {
     //delay(60);
-   character = Serial.readString();
+ character = Serial.readStringUntil('\n');
 }
       
 if (character != "") {
