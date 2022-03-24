@@ -1,5 +1,8 @@
 Boxes for the different electronics
 
+This versions are for the electronics mouted on a perfurated board to do the connections.
+In the future i'll be releasing smaller versions for the ones that user the cables soldered directly to the arduino/esp32
+
 To be printed with 0.3mm layer height
 
 I left a gap of 0,1mm to fit
