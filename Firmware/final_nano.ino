@@ -1,87 +1,99 @@
-/**************************************************************************
- This is an example for our Monochrome OLEDs based on SSD1306 drivers
-
- Pick one up today in the adafruit shop!
- ------> http://www.adafruit.com/category/63_98
-
- This example is for a 128x32 pixel display using I2C to communicate
- 3 pins are required to interface (two I2C and one reset).
-
- Adafruit invests time and resources providing this open
- source code, please support Adafruit and open-source
- hardware by purchasing products from Adafruit!
-
- Written by Limor Fried/Ladyada for Adafruit Industries,
- with contributions from the open source community.
- BSD license, check license.txt for more information
- All text above, and the splash screen below must be
- included in any redistribution.
- **************************************************************************/
-
 #include <SPI.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-
+#include <U8g2_for_Adafruit_GFX.h>
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
-
-// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
-#define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+#define OLED_RESET 4
+#define SCREEN_ADDRESS 0x3C
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-char Texto;
+U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;
 
 
 void setup() {
-  
-  Serial.begin(9600);
-  // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x32
-    Serial.println(F("SSD1306 allocation failed"));
-    for(;;); // Don't proceed, loop forever
-  }
-
-  // Show initial display buffer contents on the screen --
-  // the library initializes this with an Adafruit splash screen.
-  display.display();
-  delay(2000); // Pause for 2 seconds
-
-  // Clear the buffer
-  display.clearDisplay();
-
-  // Draw a single pixel in white
-  display.drawPixel(10, 10, SSD1306_WHITE);
-
-  display.display();
-  delay(2000);
- 
-  Serial.print("connected");
- 
-
+Serial.begin(9600);
+if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+Serial.println(F("SSD1306 allocation failed"));
+for(;;);
 }
+// Show initial display buffer contents on the screen --
+// the library initializes this with an Adafruit splash screen.
+u8g2_for_adafruit_gfx.begin(display);
 
+//set side of the display. 0 right 2 left
+//display.setRotation(0);
+
+display.clearDisplay();
+display.display();
+
+
+u8g2_for_adafruit_gfx.setFontMode(1);
+u8g2_for_adafruit_gfx.setFontDirection(0);
+u8g2_for_adafruit_gfx.setForegroundColor(WHITE);
+u8g2_for_adafruit_gfx.setFont(u8g2_font_t0_12_mf);
+u8g2_for_adafruit_gfx.setCursor(0,10);
+u8g2_for_adafruit_gfx.print("OUVER PROJECT ON!!!");
+display.display();
+ delay(2000);
+ display.clearDisplay();
+display.display();
+}
 void loop() {
-  // put your main code here, to run repeatedly:
-if(Serial.available() > 0){  
-  if (Serial.available() != ""){ 
-      Texto = Serial.read();
-      Serial.print(Texto);
-      
-  display.clearDisplay();
-
-  display.setTextSize(1);             // Normal 1:1 pixel scale
-  display.setTextColor(SSD1306_WHITE);        // Draw white text
-  display.setCursor(0,0);             // Start at top-left corner
-  display.print(Texto);
-
-  display.display();
-  }
-
+String character = "";
+while(Serial.available()) {
+character = Serial.readStringUntil('\n');
 }
-
+if (character != "") {
+Serial.println(character);
+int string_length = character.length();
+if (string_length <= 21){
+display.clearDisplay();
+u8g2_for_adafruit_gfx.setFontMode(1);
+u8g2_for_adafruit_gfx.setFontDirection(0);
+u8g2_for_adafruit_gfx.setForegroundColor(WHITE);
+u8g2_for_adafruit_gfx.setFont(u8g2_font_t0_12_mf);
+u8g2_for_adafruit_gfx.setCursor(0,10);
+u8g2_for_adafruit_gfx.print(character);
+display.display();
 }
-
- 
-
- 
+else if (string_length > 21 && string_length <= 42){
+display.clearDisplay();
+u8g2_for_adafruit_gfx.setFontMode(1);
+u8g2_for_adafruit_gfx.setFontDirection(0);
+u8g2_for_adafruit_gfx.setForegroundColor(WHITE);
+u8g2_for_adafruit_gfx.setFont(u8g2_font_t0_12_mf);
+u8g2_for_adafruit_gfx.setCursor(0,10);
+u8g2_for_adafruit_gfx.print(character.substring(0,21));
+u8g2_for_adafruit_gfx.setCursor(0,21);
+u8g2_for_adafruit_gfx.print(character.substring(21,string_length));
+display.display();
+}
+else if (string_length > 42 && string_length <= 63)
+{
+display.clearDisplay();
+u8g2_for_adafruit_gfx.setFontMode(1);
+u8g2_for_adafruit_gfx.setFontDirection(0);
+u8g2_for_adafruit_gfx.setForegroundColor(WHITE);
+u8g2_for_adafruit_gfx.setFont(u8g2_font_t0_12_mf);
+u8g2_for_adafruit_gfx.setCursor(0,10);
+u8g2_for_adafruit_gfx.print(character.substring(0,21));
+u8g2_for_adafruit_gfx.setCursor(0,21);
+u8g2_for_adafruit_gfx.print(character.substring(21,42));
+u8g2_for_adafruit_gfx.setCursor(0,32);
+u8g2_for_adafruit_gfx.print(character.substring(42,63));
+display.display();
+}
+else {
+display.clearDisplay();
+u8g2_for_adafruit_gfx.setFontMode(1);
+u8g2_for_adafruit_gfx.setFontDirection(0);
+u8g2_for_adafruit_gfx.setForegroundColor(WHITE);
+u8g2_for_adafruit_gfx.setFont(u8g2_font_t0_12_mf);
+u8g2_for_adafruit_gfx.setCursor(0,10);
+u8g2_for_adafruit_gfx.print(character.substring(0,21));
+u8g2_for_adafruit_gfx.setCursor(0,21);
+u8g2_for_adafruit_gfx.print(character.substring(21,42));
+u8g2_for_adafruit_gfx.setCursor(0,32);
+u8g2_for_adafruit_gfx.print(character.substring(42,60)+ "...");
+display.display();
+}}}
