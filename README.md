@@ -25,3 +25,5 @@ We are choosing a non commercial license because we want to garantee that there 
 At the same time, because we dont want to be the reason the price raises we set our share at a residual value, being only the conscience of who uses it to raise it, helping even more the project.
 
 Centralizing the project will help keep quality up and garantee a giant network working for the same goal.
+
+# IMPORTANT: APP UNTIL THE MOMENT IS JUST WORKING WITH ANDROID UP TO VERSION 9
