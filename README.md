@@ -26,4 +26,4 @@ At the same time, because we dont want to be the reason the price raises we set 
 
 Centralizing the project will help keep quality up and garantee a giant network working for the same goal.
 
-# IMPORTANT: APP UNTIL THE MOMENT IS JUST WORKING WITH ANDROID UP TO VERSION 9
+# IMPORTANT: ONLINE VERSION OF THE APP UNTIL THE MOMENT IS JUST WORKING WITH ANDROID UP TO VERSION 9
