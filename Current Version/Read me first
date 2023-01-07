@@ -1,0 +1,9 @@
+Online version has all functions and support for the wireless device and Bla.
+It uses the Android voice to text service that doesn't support continuous recognition.
+Because of that during silent moment the service restarts wich can make it miss the first words.
+
+Offline version uses the final recognition engine we intent to use. At this moment it uses a small 
+Model for testing purposes. The current model is under 150mb and it's available in 6 languages. You should set the language first and if it's not English you should wait for it to download it.
+It will warm you when it's over.
+We intent as soon as possible to release RC1 with this engine and all functions together.
+If you are a android programmer and wish to help, you are more than welcome.
