@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    google()
+    maven {
+        url 'https://alphacephei.com/maven/'
+    }
+
+
+}
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "org.ouver.demo"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.1"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+
+
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'net.java.dev.jna:jna:5.8.0@aar'
+    implementation group: 'com.alphacephei', name: 'vosk-android', version: '0.3.23'
+    // implementation 'com.github.k3b:vosk-api:0.3.27.5'
+    // implementation 'com.github.k3b:vosk-api:master-SNAPSHOT'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation files('src/main/java/org/ouver/demo/physicaloidlibrary.jar')
+    implementation 'com.akexorcist:bluetoothspp:1.0.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ouver</string>
+    <string name="recognize_file">Recognize File</string>
+    <string name="recognize_microphone">START</string>
+    <string name="stop_microphone">STOP</string>
+    <string name="preparing">The recognizer is launching</string>
+    <string name="ready"> choose one option to Start</string>
+    <string name="failed">FAILED TO LAUNCH RECOGNIZER %s</string>
+    <string name="elapsed">Result %s elapsed %d milliseconds\n</string>
+    <string name="starting">Starting</string>
+    <string name="say_something">Hearing…</string>
+    <string name="stop_file">Stop File</string>
+    <string name="pause">PAUSE</string>
+    <string name="continueRecognition">CONTINUE</string>
+    <string name="usb_connected">USB CONNECTED</string>
+    <string name="usb_connect">USB CONNECT</string>
+    <string name="wireless_connect">WIRELESS CONNECT</string>
+    <string name="wireless_connected">WIRELESS CONNECTED</string>
+    <string name="USB_STATUS">state</string>
+    <string name="SETTINGS">SETTINGS</string>
+    <string name="notifications_off">NOTIFICATIONS OFF</string>
+    <string name="notifications_on">NOTIFICATIONS ON</string>
+    <string name="soundsensor">SOUNDSENSOR</string>
+    <string name="soundsensor_stop">STOP SENSOR</string>
+    <string name="set_name">Set name</string>
+    <string name="edit_name_txtbox">Hi! How should I call you?</string>
+    <string name="call">CALL</string>
+    <string name="change_name_again">CHANGE NAME</string>
+    <string name="call_me">CALL ME</string>
+    <string name="waiting_for_name">Listening for your name</string>
+    <string name="notifications_warning">Please be shure you gave notifications permission on your android settings</string>
+    <string name="set_name_warning">Please set a name first!</string>
+    <string name="hi">Hi </string>
+    <string name="you_are_now_connected">you are now connected</string>
+    <string name="hey_you_are_now_connected">Hi, you are now connected</string>
+	    <string name="download">Download</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="action_settings">Languages</string>
+    <string name="warning_message"> Please talk calmly, clear and leave time between sentences.</string>
+    <string name="listening_message"> Listening…</string>
+
+
+
+
+    <!-- Preference Titles -->
+    <string name="language_header">Languages</string>
+
+    <!-- Language Preferences -->
+    <string name="language_title">Language to use for speech recognition</string>
+
+    <!-- Language Entry Values -->
+    <string name="nl">vosk-model-nl-spraakherkenning-0.6-lgraph</string>
+    <string name="en">vosk-model-small-en-us-0.15</string>
+    <string name="fr">vosk-model-small-fr-pguyot-0.3</string>
+    <string name="de">vosk-model-small-de-0.15</string>
+    <string name="br">vosk-model-small-pt-0.3</string>
+    <string name="it">vosk-model-small-it-0.4</string>
+    <string name="download_started">Download started</string>
+    <string name="download_complete">Download complete</string>
+    <string name="failed_to_download_model">Failed to download model</string>
+    <string name="languages">LANGUAGES</string>
+    <string name="warning">WARNING</string>
+</resources>

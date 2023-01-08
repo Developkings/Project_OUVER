@@ -1,0 +1,33 @@
+
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven {
+            url 'https://alphacephei.com/maven/'
+        }
+
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.3'
+    }
+}
+
+allprojects {
+    repositories {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven {
+            url 'https://alphacephei.com/maven/'
+
+        }
+
+    }
+}

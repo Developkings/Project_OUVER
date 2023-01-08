@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainLL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="center|left"
+    android:keepScreenOn="true"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:visibility="visible">
+
+    <LinearLayout
+        android:id="@+id/settingsLL"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        tools:visibility="gone">
+
+        <Button
+            android:id="@+id/languagesBTN"
+            style="@android:style/Widget.Material.Light.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center|start"
+            android:text="@string/languages" />
+
+        <Button
+            android:id="@+id/usbconnectBT"
+            style="@android:style/Widget.Material.Light.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center|start"
+            android:text="@string/usb_connect"
+            android:textAlignment="viewStart"
+            android:textColor="#CC000000" />
+
+        <Button
+            android:id="@+id/bluetoothconnectBT"
+            style="@android:style/Widget.Material.Light.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center|start"
+            android:text="@string/wireless_connect"
+            android:textAlignment="viewStart"
+            android:textColor="#CC000000" />
+
+        <Button
+            android:id="@+id/notificationsBT"
+            style="@android:style/Widget.Material.Light.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center|start"
+            android:text="@string/notifications_off"
+            android:textAlignment="viewStart"
+            android:textColor="#CC000000" />
+
+        <Button
+            android:id="@+id/changeenameagainBT"
+            style="@android:style/Widget.Material.Light.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:gravity="center|start"
+            android:text="@string/change_name_again"
+            android:textAlignment="viewStart"
+            android:textColor="#CC000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/settingsBT"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:gravity="start"
+                android:text="@string/SETTINGS"
+                android:textAlignment="viewStart"
+                android:textColor="#99000000"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+
+            <Button
+                android:id="@+id/warningBTN"
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="@string/warning"
+                android:textColor="#99000000" />
+
+            <Button
+                android:id="@+id/callBT"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:gravity="end"
+                android:text="@string/call"
+                android:textAlignment="viewEnd"
+                android:textColor="#99000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/getnameLL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:visibility="visible">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="8"
+                android:ems="10"
+                android:fontFamily="monospace"
+
+                android:hint="@string/edit_name_txtbox"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/getnameBT"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="monospace"
+                android:text="@string/set_name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/subtitlesLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/result_text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:scrollbars="vertical"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/recognizeLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/recognize_mic"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:fontFamily="monospace"
+                android:gravity="center|start"
+                android:text="@string/recognize_microphone"
+                android:textColor="#99000000" />
+
+            <Button
+                android:id="@+id/callmeBT"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:fontFamily="monospace"
+                android:text="@string/call_me"
+                android:textColor="#99000000" />
+
+            <Button
+                android:id="@+id/soundsensorBT"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:fontFamily="monospace"
+                android:text="@string/soundsensor"
+                android:textColor="#99000000" />
+
+            <ToggleButton
+                android:id="@+id/pause"
+                style="@android:style/Widget.Material.Light.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:fontFamily="monospace"
+                android:gravity="center|end"
+                android:textColor="#99000000"
+                android:textOff="@string/pause"
+                android:textOn="@string/continueRecognition" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/callLL"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        tools:visibility="gone">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ems="10"
+            android:enabled="false"
+            android:fontFamily="monospace"
+            android:inputType="text"
+            android:singleLine="true"
+            android:text="Coming Soon!!!"
+            android:textColor="#CC000000" />
+    </LinearLayout>
+
+</LinearLayout>
