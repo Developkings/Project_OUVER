@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <string name="app_name">Ouver</string>
     <string name="recognize_file">Recognize File</string>
     <string name="recognize_microphone">START</string>
@@ -16,17 +17,19 @@
     <string name="continueRecognition">CONTINUE</string>
     <string name="usb_connected">USB CONNECTED</string>
     <string name="usb_connect">USB CONNECT</string>
-    <string name="wireless_connect">WIRELESS CONNECT</string>
-    <string name="wireless_connected">WIRELESS CONNECTED</string>
+    <string name="ouver_connect">BT CONNECT</string>
+    <string name="ouver_connected">BT CONNECTED</string>
+    <string name="smart_connect">SMART CONNECT</string>
+    <string name="smart_connected">SMART CONNECTED</string>
     <string name="USB_STATUS">state</string>
-    <string name="SETTINGS">SETTINGS</string>
+    <string name="connections">CONNECTIONS</string>
     <string name="notifications_off">NOTIFICATIONS OFF</string>
     <string name="notifications_on">NOTIFICATIONS ON</string>
     <string name="soundsensor">SOUNDSENSOR</string>
     <string name="soundsensor_stop">STOP SENSOR</string>
     <string name="set_name">Set name</string>
     <string name="edit_name_txtbox">Hi! How should I call you?</string>
-    <string name="call">CALL</string>
+    <string name="settings">SETTINGS</string>
     <string name="change_name_again">CHANGE NAME</string>
     <string name="call_me">CALL ME</string>
     <string name="waiting_for_name">Listening for your name</string>

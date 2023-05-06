@@ -16,6 +16,8 @@ package org.ouver.demo;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +45,7 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.preference.PreferenceManager;
@@ -95,6 +98,7 @@ public class OuverActivity extends Activity implements
     private String Connectedto;
     private boolean isconnectusb = false;
     private boolean isconnectbt = false;
+    private boolean isconnectsmart = false;
     private boolean istosend = false;
     private boolean notificationdstatus = false;
     private boolean hasuser = false;
@@ -108,7 +112,7 @@ public class OuverActivity extends Activity implements
 
     public static final String mypreference = "mypref";
     public static final String Name = "nameKey";
-
+    public static final String CharsNumber = "charsnumber";
 
 
     int counterfinal = 0;
@@ -125,6 +129,7 @@ public class OuverActivity extends Activity implements
         super.onCreate(state);
         setContentView(R.layout.main);
         getActionBar().hide();
+
 
         /* start notifications*/
         LocalBroadcastManager.getInstance(this).registerReceiver(onNotice, new IntentFilter("Msg"));
@@ -158,6 +163,9 @@ public class OuverActivity extends Activity implements
 
         /*BT buttons*/
         findViewById(R.id.bluetoothconnectBT).setOnClickListener(view -> startBT());
+
+        /*Smart buttons*/
+        findViewById(R.id.smartconnectBT).setOnClickListener(view -> startSmart());
 
         /*Notifications buttons*/
         findViewById(R.id.notificationsBT).setOnClickListener(view -> notificationsclicked());
@@ -620,6 +628,32 @@ usbbtn.setText(R.string.usb_connected);
 
     }
 
+    private void startSmart() {
+        if ( !isconnectsmart){
+
+            Button usbsmart = findViewById(R.id.smartconnectBT);
+            usbsmart.setText(R.string.smart_connected);
+            Connectedto = "SMART";
+            isconnectsmart = true;
+            String usbconnectedwelcome;
+            if (hasuser){
+                usbconnectedwelcome = "Hi " + userName + "you are now connected";
+            }else{
+                usbconnectedwelcome = "Hi, you are now connected";
+            }
+
+            sendTxtUsb(usbconnectedwelcome);
+        } else {
+
+            Button usbsmart = findViewById(R.id.smartconnectBT);
+            usbsmart.setText(R.string.smart_connect);
+            Connectedto = "";
+            isconnectsmart = false;
+        }
+
+
+    }
+
     private void sendTxtUsb(String str) {
 
 
@@ -666,6 +700,36 @@ private void  startBT(){
 
 
     }
+
+
+    private void sendTxtSmart(String str) {
+      if(str != null && !str.trim().isEmpty()){
+          String channelId = "ouver_channel_id";
+          String channelName = "Ouver Channel";
+          int importance = NotificationManager.IMPORTANCE_HIGH;
+          NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
+          NotificationManager notificationManager = getSystemService(NotificationManager.class);
+          notificationManager.createNotificationChannel(channel);
+
+          // Set a unique ID for the notification
+          int notificationId = 60;
+
+          NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
+                  .setSmallIcon(R.drawable.icon)
+                  .setContentTitle(" ")
+                  .setContentText(str)
+                  .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+          // Cancel any previously shown notifications with the same ID
+          notificationManager.cancel(notificationId);
+
+          // Show the notification
+          notificationManager.notify(notificationId, builder.build());
+
+
+    }
+
+    }
     /*-------------------------------Menu-------------------------------*/
     private void settingsAC() {
 
@@ -697,7 +761,9 @@ private void  startBT(){
             sendTxtUsb(txt);
         } else if (Connectedto == "BT") {
                 sendTxtBluetooth(txt);
-            }
+            }else if (Connectedto == "SMART") {
+            sendTxtSmart(txt);
+        }
 
     }
     /*------------------------------------Work txt size to be sent -----------------------------*/
