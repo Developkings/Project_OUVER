@@ -39,9 +39,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -61,6 +63,7 @@ import org.vosk.Recognizer;
 import org.vosk.android.RecognitionListener;
 import org.vosk.android.SpeechService;
 import org.vosk.android.SpeechStreamService;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -110,9 +113,10 @@ public class OuverActivity extends Activity implements
     private String userName;
 
 
+
     public static final String mypreference = "mypref";
     public static final String Name = "nameKey";
-    public static final String CharsNumber = "charsnumber";
+    public static int CharsNumber;
 
 
     int counterfinal = 0;
@@ -129,6 +133,53 @@ public class OuverActivity extends Activity implements
         super.onCreate(state);
         setContentView(R.layout.main);
         getActionBar().hide();
+
+        SeekBar seekBar = findViewById(R.id.seek_bar);
+        seekBar.setMax(88); // Set the maximum value to 88 (which represents the range from 12 to 100)
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int savedProgressValue = prefs.getInt("progressValue", -1); // Retrieve the saved progress value, defaulting to -1 if no value is found
+
+        if (savedProgressValue != -1) { // Check if a saved progress value was found
+            seekBar.setProgress(savedProgressValue); // Set the progress of the seek bar to the saved value
+            CharsNumber = savedProgressValue;
+            TextView Charstext= findViewById(R.id.SetMaxCharsText);
+            Charstext.setText("Max chars" + " " + savedProgressValue);
+        } else {
+            seekBar.setProgress(32); // Set the progress to a default value if no saved value is found
+            CharsNumber = 32;
+            TextView Charstext= findViewById(R.id.SetMaxCharsText);
+            Charstext.setText("Max chars" + " " + 32);
+        }
+
+        seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Round the progress value to the nearest integer
+                int roundedProgress = Math.round(progress) + 12;
+                // Update the progress of the seek bar with the rounded value
+                seekBar.setProgress(roundedProgress);
+
+                CharsNumber = roundedProgress;
+                // Do something with the rounded progress value
+
+                TextView Charstext= findViewById(R.id.SetMaxCharsText);
+                Charstext.setText("Max chars" + " " + roundedProgress);
+                Log.d("SeekBar", "Progress: " + roundedProgress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Do something when the user starts touching the seek bar
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                prefs.edit().putInt("progressValue", CharsNumber).apply();
+            }
+        });
+
 
 
         /* start notifications*/
@@ -800,10 +851,10 @@ if (istosend){
                 int txtLenght = txt.length();
 
 
-                if (txtLenght>62)
-                    while (txtLenght>62)  {
+                if (txtLenght>CharsNumber)
+                    while (txtLenght>CharsNumber)  {
                         /*get first 61 characters*/
-                        String cuttedTxtSubstring = txt.substring(0, 61);
+                        String cuttedTxtSubstring = txt.substring(0, (CharsNumber-1));
 
                         /*divide text into list of words dividing them in each space*/
                         String[] cuttedText = cuttedTxtSubstring.split("\\s+");
@@ -814,7 +865,7 @@ if (istosend){
                         /*get length of last word*/
                         int lastwordsize = lastword.length();
 
-                        char lastletter =cuttedTxtSubstring.charAt(60);
+                        char lastletter =cuttedTxtSubstring.charAt(CharsNumber-2);
 
 
                         if (lastletter == ' '){
@@ -822,7 +873,7 @@ if (istosend){
                         }
 
                         /*get beguinning of extended text*/
-                        int inicio = 61 - lastwordsize;
+                        int inicio = (CharsNumber-1) - lastwordsize;
 
 
 
@@ -1008,8 +1059,6 @@ public void playwarningAC(){
     String toSpeak = getString(R.string.warning_message);
     t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
 }
-
-
 
 
     /*------------------------------------End-----------------------------*/
