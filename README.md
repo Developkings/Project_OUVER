@@ -26,6 +26,9 @@ It is a Retro answer to the future that takes the proven t9 muscle memory keyboa
 
 We want to make this project as a DIY solution so it can be made easily by who needs and at the same time set the bar for the prices of sets that will appear made industrially.
 
+This is an open project and we would like to know your ideas.
 
+search for the project name in social media you will find us or in
+www.developkings.com
 
 
